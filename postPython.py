@@ -2,14 +2,6 @@ import pickle
 import numpy as np
 from sklearn import preprocessing
 from flask import Flask, jsonify, request, json
-
-def abrirModelo(ruta):
-    modelo = pickle.load(open(ruta, 'rb'))
-    return modelo
-
-def predecir(modelo, X):
-    return modelo.predict(X)
-
 app = Flask(__name__)
 
 # {"Temperature":0,"Pressure":0,"Humidity":0,"WindDirection(Degrees)":0,"Speed":0,"mes":0,"hora":0,"diferencia":0}
@@ -17,20 +9,11 @@ app = Flask(__name__)
 @app.route('/prediction',methods=['POST'])
 def prediction():
     content = request.get_json()
-
-    Temperature = content['Temperature']
-    Pressure = content['Pressure']
-    Humidity = content['Humidity']
-    WindDirection = content['WindDirection']
-    Speed = content['Speed']
-    mes = content['mes']
-    hora = content['hora']
-    diferencia = content['diferencia']
-
-    datos = np.array([[Temperature,Pressure,Humidity,WindDirection,Speed,mes,hora,diferencia]])
+    datos = np.array([[content['Temperature'],content['Pressure'],content['Humidity'],content['WindDirection'],content['Speed'],content['mes'],content['hora'],content['diferencia']]])
     datos = preprocessing.scale(datos)
+    modelo = pickle.load(open("modelRF.h5", 'rb'))
 
-    result = str(predecir(abrirModelo("modelRF.h5"), datos)[0])
+    result = str(modelo.predict(datos)[0])
     d = {"result": result}
     response = app.response_class(
         response=json.dumps(d),
