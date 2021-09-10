@@ -2,9 +2,14 @@ import pickle
 import numpy as np
 from sklearn import preprocessing
 from flask import Flask, jsonify, request, json
+
 app = Flask(__name__)
 
 # {"Temperature":0,"Pressure":0,"Humidity":0,"WindDirection(Degrees)":0,"Speed":0,"mes":0,"hora":0,"diferencia":0}
+
+@app.route('/')
+def holamundo():
+    return 'Aqui'
 
 @app.route('/prediction',methods=['POST'])
 def prediction():
