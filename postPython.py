@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # {"Temperature":0,"Pressure":0,"Humidity":0,"WindDirection(Degrees)":0,"Speed":0,"mes":0,"hora":0,"diferencia":0}
 
-@app.route('/',methods=['POST'])
+@app.route('/prediction',methods=['POST'])
 def prediction():
     content = request.get_json()
     datos = np.array([[content['Temperature'],content['Pressure'],content['Humidity'],content['WindDirection'],content['Speed'],content['mes'],content['hora'],content['diferencia']]])
