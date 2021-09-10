@@ -14,12 +14,8 @@ app = Flask(__name__)
 
 # {"Temperature":0,"Pressure":0,"Humidity":0,"WindDirection(Degrees)":0,"Speed":0,"mes":0,"hora":0,"diferencia":0}
 
-@app.route('/hola')
-def holamundo():
-    return 'Aqui'
-
-@app.route('/prueba',methods=['POST'])
-def prueba():
+@app.route('/prediction',methods=['POST'])
+def prediction():
     content = request.get_json()
 
     Temperature = content['Temperature']
