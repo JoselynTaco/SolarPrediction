@@ -1,0 +1,27 @@
+Datos 1
+{
+    "Temperature": "49",
+    "Pressure":"30.47",
+    "Humidity":"93",
+    "WindDirection":"120.55",
+    "Speed":"2.25",
+    "mes":"9",
+    "hora":"23",
+    "diferencia":"720"
+}
+Result: 
+	Valore Real: 1.23
+
+Datos 2
+{
+    "Temperature": "62",
+    "Pressure":"30.43",
+    "Humidity":"47",
+    "WindDirection":"346.87",
+    "Speed":"5.62",
+    "mes":"9",
+    "hora":"13",
+    "diferencia":"720"
+}
+Result: 
+	Valore Real: 933.15
